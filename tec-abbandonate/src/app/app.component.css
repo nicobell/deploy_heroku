@@ -1,0 +1,25 @@
+.navbar{
+  background-color: #1C1A11;
+  border-bottom: 2px solid #96031A;
+}
+
+.navbar > a{
+  color: #FAA916;
+  margin-right: 20px;
+}
+
+.nav-item a {
+    color: #FAA916;
+    padding: 10px;
+}
+
+.nav-item{
+  margin-left: 10px;
+}
+
+
+.nav-item a:hover {
+
+  background-color: #FAA916;
+    color: #FDFFFC;
+}
