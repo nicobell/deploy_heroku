@@ -1,0 +1,38 @@
+.navbar{
+  background-color: #3a4750;
+}
+
+.navbar > a{
+  color: #eeeeee;
+  margin-right: 20px;
+}
+
+.nav-item a {
+    color: #eeeeee;
+}
+
+.nav-item a:hover {
+  color: #303841;
+  background-color: #f6c90e;
+}
+
+
+#nav-filter {
+  z-index: 0;
+  position: relative;
+  -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+  animation-name: example;
+  animation-duration: 1s;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+  0%   {background-color:red; left:0px; top:0px;}
+  100% {background-color:red; left:0px; top:0px;}
+}
+/* Standard syntax */
+@keyframes example {
+  0%   {top:-80px;}
+  100% {top:0px;}
+}

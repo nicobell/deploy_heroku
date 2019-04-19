@@ -1,0 +1,32 @@
+#nav-main{
+  background-color: #303841;
+  z-index: 99;
+}
+
+.navbar > a{
+  color: #eeeeee;
+  margin-right: 20px;
+}
+
+.nav-item a {
+    color: #eeeeee;
+    padding: 10px;
+}
+
+.nav-item{
+  margin-left: 10px;
+}
+
+
+.nav-item a:hover {
+  color: #303841;
+  background-color: #f6c90e;
+}
+
+.navbar-toggler{
+  border: 0px;
+}
+.navbar-toggler-icon{
+  color: #eeeeee;
+  margin-top: -10px;
+}
