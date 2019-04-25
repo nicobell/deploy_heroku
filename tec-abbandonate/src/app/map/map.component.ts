@@ -17,10 +17,144 @@ am4core.useTheme(am4themes_animated);
 export class MapComponent {
 
 	private chart: am4charts.XYChart;
+	private map: am4maps.MapChart;
 
 	constructor(private zone : NgZone) { }
 
 	ngAfterViewInit() {
+		this.zone.runOutsideAngular(() => {
+			let map = am4core.create("chartdiv", am4maps.MapChart);
+
+			map.geodata = am4geodata_worldLow;
+			map.projection = new am4maps.projections.Mercator();
+			
+			//map.seriesContainer.draggable = false;
+			map.seriesContainer.resizable = false;
+			//map.maxZoomLevel = 1;
+
+			let targetSVG = "M9,0C4.029,0,0,4.029,0,9s4.029,9,9,9s9-4.029,9-9S13.971,0,9,0z M9,15.93 c-3.83,0-6.93-3.1-6.93-6.93S5.17,2.07,9,2.07s6.93,3.1,6.93,6.93S12.83,15.93,9,15.93 M12.5,9c0,1.933-1.567,3.5-3.5,3.5S5.5,10.933,5.5,9S7.067,5.5,9,5.5 S12.5,7.067,12.5,9z";
+
+			var polygonSeries = new am4maps.MapPolygonSeries();
+			polygonSeries.useGeodata = true;
+			polygonSeries.exclude = ["AQ"];
+			map.series.push(polygonSeries);
+			let polygonTemplate = polygonSeries.mapPolygons.template;
+		
+			polygonTemplate.fill = am4core.color("#303841");
+			polygonTemplate.strokeOpacity = 0.5;
+			polygonTemplate.nonScalingStroke = true;
+			polygonTemplate.propertyFields.fill = "fill";
+
+			/* TO SEE COUNTRY NAMES AND COLOR HOVERS
+			polygonTemplate.tooltipText = "{name}";
+			let hs = polygonTemplate.states.create("hover");
+			hs.properties.fill = am4core.color("#f76b00");
+			*/
+
+			/* MANIPULATE ONLY CERTAIN COUNTRIES IN THE WORLD
+			polygonSeries.data = [{
+				"id": "US",
+				"name": "United States",
+				"value": 100,
+				"fill": am4core.color("#F05C5C")
+			}, {
+				"id": "FR",
+				"name": "France",
+				"value": 50,
+				"fill": am4core.color("#5C5CFF")
+			}];
+			*/
+
+			// MARKERS
+			let imageSeries = map.series.push(new am4maps.MapImageSeries());
+			let imageSeriesTemplate = imageSeries.mapImages.template;
+
+			let circle = imageSeriesTemplate.createChild(am4core.Circle);
+			circle.radius = 5;
+			circle.fill = am4core.color("#f76b00");
+			circle.opacity = 0.8;
+			circle.stroke = am4core.color("white");
+
+			//circle.nonScaling = true;
+			//circle.path = targetSVG;
+
+			//QHAT PARAMETERS USE AS POSITION ON THE MAP
+			imageSeriesTemplate.propertyFields.latitude = "latitude";
+			imageSeriesTemplate.propertyFields.longitude = "longitude";
+
+			imageSeriesTemplate.horizontalCenter = "middle";
+			imageSeriesTemplate.verticalCenter = "middle";
+			imageSeriesTemplate.align = "center";
+			imageSeriesTemplate.valign = "middle";
+			imageSeriesTemplate.width = 8;
+			imageSeriesTemplate.height = 8;
+			imageSeriesTemplate.nonScaling = true;
+			imageSeriesTemplate.tooltipText = "{title}";
+			imageSeriesTemplate.fill = am4core.color("#000");
+			imageSeriesTemplate.background.fillOpacity = 0;
+			imageSeriesTemplate.background.fill = am4core.color("#ffffff");
+			imageSeriesTemplate.setStateOnChildren = true;
+			imageSeriesTemplate.states.create("hover");
+
+			imageSeries.data = [{
+					"title": "Vienna",
+					"latitude": 48.2092,
+					"longitude": 16.3728
+			}, {
+					"title": "Minsk",
+					"latitude": 53.9678,
+					"longitude": 27.5766
+			}, {
+					"title": "Brussels",
+					"latitude": 50.8371,
+					"longitude": 4.3676
+			}, {
+					"title": "Sarajevo",
+					"latitude": 43.8608,
+					"longitude": 18.4214
+			}, {
+					"title": "Sofia",
+					"latitude": 42.7105,
+					"longitude": 23.3238
+			}, {
+					"title": "Zagreb",
+					"latitude": 45.815,
+					"longitude": 15.9785
+			}, {
+					"title": "Pristina",
+					"latitude": 42.666667,
+					"longitude": 21.166667
+			}, {
+					"title": "Prague",
+					"latitude": 50.0878,
+					"longitude": 14.4205
+			}, {
+					"title": "Copenhagen",
+					"latitude": 55.6763,
+					"longitude": 12.5681
+			}, {
+					"title": "Tallinn",
+					"latitude": 59.4389,
+					"longitude": 24.7545
+			}];
+
+			var zoomControl = new am4maps.ZoomControl();
+			map.zoomControl = zoomControl;
+			zoomControl.slider.height = 300;
+			zoomControl.fill = am4core.color("#f76b00");
+
+			let home = map.chartContainer.createChild(am4core.Button);
+			home.label.text = "Center";
+			home.align = "right";
+			home.events.on("hit", function(ev) {
+				map.goHome();
+			});
+
+			this.map = map;
+		})
+	}
+
+	provaGrafico() { //rename ngAfterViewInit() to see chart
 		this.zone.runOutsideAngular(() => {
 			let chart = am4core.create("chartdiv", am4charts.XYChart);
 
