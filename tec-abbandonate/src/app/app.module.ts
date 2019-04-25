@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { TimelineComponent } from './timeline/timeline.component';
 import { ArchivioComponent } from './archivio/archivio.component';
 import { HomeComponent } from './home/home.component';
+import { TimefilterComponent } from './timefilter/timefilter.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HomeComponent } from './home/home.component';
     NavMainComponent,
     TimelineComponent,
     ArchivioComponent,
-    HomeComponent
+    HomeComponent,
+    TimefilterComponent
   ],
   imports: [
     BrowserModule,
