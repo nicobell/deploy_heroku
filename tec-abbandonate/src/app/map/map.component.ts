@@ -6,6 +6,10 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import { DataService } from '../data.service';
+import { DATA } from 'src/app/mock-data';
+import { YEARFROM } from 'src/app/mock-data';
+import { YEARTO } from 'src/app/mock-data';
+
 
 am4core.useTheme(am4themes_animated);
 
@@ -17,17 +21,18 @@ am4core.useTheme(am4themes_animated);
 
 export class MapComponent {
 
-	constructor(private zone : NgZone, private data : DataService) { }
+	constructor(private zone : NgZone) { }
 
 	private chart: am4charts.XYChart;
 	private map: am4maps.MapChart;
+	data = DATA;
 	techs = [];
 
 	ngAfterViewInit() {
 
-		this.data.getTechs().map( data => {
-			if(data.yearFrom > this.data.yearFrom && data.yearTo < this.data.yearTo)
-				this.techs.push(data);
+		this.data.map( d => {
+			if(d.yearFrom >= YEARFROM && d.yearTo <= YEARTO)
+				this.techs.push(d);
 		});
 
 		this.zone.runOutsideAngular(() => {

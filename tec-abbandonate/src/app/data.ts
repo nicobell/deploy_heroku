@@ -6,8 +6,8 @@ export class Data{
   category: string;
   dateFrom: string;
   dateTo: string;
-  yearFrom: string;
-  yearTo: string;
+  yearFrom: number;
+  yearTo: number;
   author: string;
   latitude: number;
   longitude: number;
