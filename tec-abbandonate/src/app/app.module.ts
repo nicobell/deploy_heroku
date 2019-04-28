@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
 
-import { FormsModule } from '@angular/forms';
 import { NavFilterComponent } from './nav-filter/nav-filter.component';
 import { NavMainComponent } from './nav-main/nav-main.component';
 

@@ -3,6 +3,7 @@ export class Data{
   name : string;
   description: string;
   shortDescription: string;
+  category: string;
   dateFrom: string;
   dateTo: string;
   yearFrom: string;
@@ -12,7 +13,7 @@ export class Data{
   longitude: number;
   image: string //path immagine del progetto
 }
-
+ 
 /*
 ESEMIO DI INSERIMENTO
 !!ATTENZIONE alle stringhe che vanno messe tra apici

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DATA } from 'src/app/mock-data';
 
 @Component({
   selector: 'app-archivio',
@@ -8,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class ArchivioComponent implements OnInit {
 
   constructor() { }
+
+  data = DATA;
+  
 
   ngOnInit() {
   }

@@ -1,0 +1,40 @@
+/* da togliere*/
+.img{
+    background-color: grey;
+    height: 300px;
+}
+
+li{
+    list-style:none;
+}
+
+.container-fluid{
+    padding: 50px!important;
+}
+
+.data-col{
+    margin: auto;
+}
+
+.cell-title{
+    color: #f76b00;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+    font-weight: 700;
+    padding-left: 50px;
+}
+
+.cell{
+    margin-left: 30px;
+    vertical-align: text-top!important;
+}
+
+.row{
+    margin-top: 10px;
+}
+
+.main-row{
+    margin-top: 40px;    
+    background-color: #eeeeee;
+    padding: 20px;
+}
