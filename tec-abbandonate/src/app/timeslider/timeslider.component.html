@@ -1,0 +1,13 @@
+<label>Date from : {{value}}</label>
+<br/>
+<mat-slider
+  [max]="max"
+  [min]="min"
+  [step]="step"
+  [thumbLabel]="thumbLabel"
+  [tickInterval]="tickInterval"
+  [(ngModel)]="value"
+  style="width: 60%;"
+  (output)="onChange(value)"
+  >
+</mat-slider>

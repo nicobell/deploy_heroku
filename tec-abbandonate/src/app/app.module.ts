@@ -13,7 +13,9 @@ import { RouterModule } from '@angular/router';
 import { TimelineComponent } from './timeline/timeline.component';
 import { ArchivioComponent } from './archivio/archivio.component';
 import { HomeComponent } from './home/home.component';
-import { TimefilterComponent } from './timefilter/timefilter.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCheckboxModule, MatSliderModule } from "@angular/material";
+import { TimesliderComponent } from './timeslider/timeslider.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +26,17 @@ import { TimefilterComponent } from './timefilter/timefilter.component';
     TimelineComponent,
     ArchivioComponent,
     HomeComponent,
-    TimefilterComponent
+    TimesliderComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,6 +5,7 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
+import { DataService } from '../data.service';
 
 am4core.useTheme(am4themes_animated);
 
@@ -16,12 +17,19 @@ am4core.useTheme(am4themes_animated);
 
 export class MapComponent {
 
+	constructor(private zone : NgZone, private data : DataService) { }
+
 	private chart: am4charts.XYChart;
 	private map: am4maps.MapChart;
-
-	constructor(private zone : NgZone) { }
+	techs = [];
 
 	ngAfterViewInit() {
+
+		this.data.getTechs().map( data => {
+			if(data.yearFrom > this.data.yearFrom && data.yearTo < this.data.yearTo)
+				this.techs.push(data);
+		});
+
 		this.zone.runOutsideAngular(() => {
 			let map = am4core.create("chartdiv", am4maps.MapChart);
 
@@ -72,7 +80,7 @@ export class MapComponent {
 			circle.opacity = 1;
 			circle.stroke = am4core.color("white");
 
-			//QHAT PARAMETERS USE AS POSITION ON THE MAP
+			//WHAT PARAMETERS USE AS POSITION ON THE MAP
 			imageSeriesTemplate.propertyFields.latitude = "latitude";
 			imageSeriesTemplate.propertyFields.longitude = "longitude";
 
@@ -83,39 +91,16 @@ export class MapComponent {
 			imageSeriesTemplate.width = 8;
 			imageSeriesTemplate.height = 8;
 			imageSeriesTemplate.nonScaling = true;
-			imageSeriesTemplate.tooltipText = "{title}";
-			imageSeriesTemplate.fill = am4core.color("#000");
+			imageSeriesTemplate.tooltipText = "{name}";
+			imageSeriesTemplate.fill = am4core.color("#0000");
 			imageSeriesTemplate.background.fillOpacity = 0;
 			imageSeriesTemplate.background.fill = am4core.color("#ffffff");
 			imageSeriesTemplate.setStateOnChildren = true;
 			imageSeriesTemplate.states.create("hover");
 
-			imageSeries.data = [{
-				"title": "Super 8",
-				"yearFrom": 1965,
-				"yearTo": 1975,
-				"latitude": 43.1862853,
-				"longitude": -77.6864389
-			},{
-				"title": "Betamax",
-				"yearFrom": 1975,
-				"yearTo": 2002,
-				"latitude": 36,
-				"longitude": 140
-			}, {
-				"title": "VHS",
-				"yearFrom": 1976,
-				"yearTo": 2008,
-				"latitude": 35,
-				"longitude": 137
-			}, {
-				"title": "Laserdisc",
-				"yearFrom": 1978,
-				"yearTo": 1995,
-				"latitude": 52.0896405,
-				"longitude": 5.3348803
-			}];
+			imageSeries.data = this.techs;
 
+			//UI ELEMENTS TO CONTROL ZOOM AND RECENTER MAP
 			var zoomControl = new am4maps.ZoomControl();
 			map.zoomControl = zoomControl;
 			zoomControl.slider.height = 300;

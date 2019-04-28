@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TimefilterComponent } from './timefilter.component';
+import { TimesliderComponent } from './timeslider.component';
 
-describe('TimefilterComponent', () => {
-  let component: TimefilterComponent;
-  let fixture: ComponentFixture<TimefilterComponent>;
+describe('TimesliderComponent', () => {
+  let component: TimesliderComponent;
+  let fixture: ComponentFixture<TimesliderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TimefilterComponent ]
+      declarations: [ TimesliderComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TimefilterComponent);
+    fixture = TestBed.createComponent(TimesliderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
