@@ -17,7 +17,7 @@ li{
 }
 
 .cell-title{
-    color: #f76b00;
+    color: var(--main-color);
     font-size: 1.2em;
     letter-spacing: 1px;
     font-weight: 700;
@@ -35,6 +35,6 @@ li{
 
 .main-row{
     margin-top: 40px;    
-    background-color: #eeeeee;
+    background-color: var(--light-bg);
     padding: 20px;
 }

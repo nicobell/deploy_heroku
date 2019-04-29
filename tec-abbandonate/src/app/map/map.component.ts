@@ -51,7 +51,7 @@ export class MapComponent {
 			map.series.push(polygonSeries);
 			let polygonTemplate = polygonSeries.mapPolygons.template;
 		
-			polygonTemplate.fill = am4core.color("#3a4750");
+			polygonTemplate.fill = am4core.color("#3F3F3F");
 			polygonTemplate.strokeOpacity = 0.5;
 			polygonTemplate.nonScalingStroke = true;
 			polygonTemplate.propertyFields.fill = "fill";
@@ -59,7 +59,7 @@ export class MapComponent {
 			// TO SEE COUNTRY NAMES AND COLOR HOVERS
 			//polygonTemplate.tooltipText = "{name}";
 			let hs = polygonTemplate.states.create("hover");
-			hs.properties.fill = am4core.color("#303841");
+			hs.properties.fill = am4core.color("#7A7A7A");
 			
 			/* MANIPULATE ONLY CERTAIN COUNTRIES IN THE WORLD
 			polygonSeries.data = [{
@@ -81,7 +81,7 @@ export class MapComponent {
 
 			let circle = imageSeriesTemplate.createChild(am4core.Circle);
 			circle.radius = 5;
-			circle.fill = am4core.color("#f76b00");
+			circle.fill = am4core.color("#DD9933");
 			circle.opacity = 1;
 			circle.stroke = am4core.color("white");
 
@@ -108,12 +108,12 @@ export class MapComponent {
 			//UI ELEMENTS TO CONTROL ZOOM AND RECENTER MAP
 			var zoomControl = new am4maps.ZoomControl();
 			map.zoomControl = zoomControl;
-			zoomControl.slider.height = 300;
-			zoomControl.fill = am4core.color("#f76b00");
+			zoomControl.slider.height = 350;
+			zoomControl.fill = am4core.color("#000000");
 
 			let home = map.chartContainer.createChild(am4core.Button);
 			home.label.text = "Center";
-			home.align = "right";
+			home.align = "center";
 			home.events.on("hit", function(ev) {
 				map.goHome();
 			});

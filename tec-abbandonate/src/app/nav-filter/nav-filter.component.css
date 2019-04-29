@@ -1,19 +1,19 @@
 .navbar{
-  background-color: #3a4750;
+  background-color: var(--dark-1);
 }
 
 .navbar > a{
-  color: #eeeeee;
+  color: var(--light-bg);
   margin-right: 20px;
 }
 
 
 .nav-item a {
-    color: #eeeeee;
+    color: var(--light-bg);
 }
 
 .nav-item a:hover {
-  background-color: #f76b00;
+  background-color: var(--main-color);
 }
 
 
@@ -26,10 +26,26 @@
   animation-duration: 1s;
 }
 
+.navbar-nav {
+  float:none;
+  margin:0 auto;
+  display: block;
+  text-align: center;
+}
+
+.navbar-nav > li {
+  display: inline-block;
+  float:none;
+}
+
+.nav-link{
+  width: 100px;
+}
+
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes example {
-  0%   {background-color:red; left:0px; top:0px;}
-  100% {background-color:red; left:0px; top:0px;}
+  0%   {background-color:var(--light-bg); left:0px; top:0px;}
+  100% {background-color:var(--light-bg); left:0px; top:0px;}
 }
 /* Standard syntax */
 @keyframes example {

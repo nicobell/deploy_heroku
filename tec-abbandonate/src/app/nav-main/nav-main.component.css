@@ -1,15 +1,19 @@
 #nav-main{
-  background-color: #303841;
+  background-color: var(--dark-bg);
   z-index: 99;
 }
 
+.navbar-brand{
+  color: var(--main-color)!important;
+}
+
 .navbar > a{
-  color: #eeeeee;
+  color: var(--light-bg);
   margin-right: 20px;
 }
 
 .nav-item a {
-    color: #eeeeee;
+    color: var(--light-bg);
     padding: 10px;
 }
 
@@ -19,13 +23,13 @@
 
 
 .nav-item a:hover {
-  background-color: #f76b00;
+  background-color: var(--main-color);
 }
 
 .navbar-toggler{
   border: 0px;
 }
 .navbar-toggler-icon{
-  color: #eeeeee;
+  color:var(--light-bg);
   margin-top: -10px;
 }

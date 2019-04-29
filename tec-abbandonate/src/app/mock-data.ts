@@ -25,14 +25,14 @@ export const DATA: Data[] = [
     description: 'Videocassette.',
     shortDescription: 'Primo sistema di videoregistrazione a nastro magnetico, ideato appositamente per il mercato domestico. ',
     category: 'video', 
-    dateFrom: '10/05/1975', /* !!Rispetta il formato!!! */
+    dateFrom: '10/05/1975', 
     dateTo: '1/12/2002',
     yearFrom: 1975,
     yearTo: 2002,
     author: 'Sony',
-    latitude: 125.1518787,
-    longitude: 125.1597,
-    image: 'src/assets/DataImage/polaroid.jpg' /* !!Rispettare il path della cartella!!! */
+    latitude: 37,//35.689506,
+    longitude: 140.6917,
+    image: 'src/assets/DataImage/betamax.jpg' /* !!Rispettare il path della cartella!!! */
   //creata in Giappone ma venduta negli Stati Uniti
   //videotape format war contro VHS - 1970s e 1980s
   }, {
