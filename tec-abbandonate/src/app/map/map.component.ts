@@ -1,14 +1,12 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
-import { DataService } from '../data.service';
 import { DATA } from 'src/app/mock-data';
-import { YEARFROM } from 'src/app/mock-data';
-import { YEARTO } from 'src/app/mock-data';
+import { deflateRaw } from 'zlib';
 
 am4core.useTheme(am4themes_animated);
 
@@ -25,14 +23,12 @@ export class MapComponent {
 	private chart: am4charts.XYChart;
 	private map: am4maps.MapChart;
 	data = DATA;
+	yearInUse = 2010;
 	techs = [];
 
 	ngAfterViewInit() {
 
-		this.data.map( d => {
-			if(d.yearFrom >= YEARFROM && d.yearTo <= YEARTO)
-				this.techs.push(d);
-		});
+		
 
 		this.zone.runOutsideAngular(() => {
 			let map = am4core.create("chartdiv", am4maps.MapChart);
@@ -42,7 +38,7 @@ export class MapComponent {
 			
 			//map.seriesContainer.draggable = false;
 			//map.seriesContainer.resizable = false;
-			map.maxZoomLevel = 6;
+			map.maxZoomLevel = 8;
 
 			var polygonSeries = new am4maps.MapPolygonSeries();
 			polygonSeries.useGeodata = true;
@@ -75,34 +71,7 @@ export class MapComponent {
 			*/
 	
 			// MARKERS
-			let imageSeries = map.series.push(new am4maps.MapImageSeries());
-			let imageSeriesTemplate = imageSeries.mapImages.template;
-
-			let circle = imageSeriesTemplate.createChild(am4core.Circle);
-			circle.radius = 5;
-			circle.fill = am4core.color("#DD9933");
-			circle.opacity = 1;
-			circle.stroke = am4core.color("white");
-
-			//WHAT PARAMETERS USE AS POSITION ON THE MAP
-			imageSeriesTemplate.propertyFields.latitude = "latitude";
-			imageSeriesTemplate.propertyFields.longitude = "longitude";
-
-			imageSeriesTemplate.horizontalCenter = "middle";
-			imageSeriesTemplate.verticalCenter = "middle";
-			imageSeriesTemplate.align = "center";
-			imageSeriesTemplate.valign = "middle";
-			imageSeriesTemplate.width = 8;
-			imageSeriesTemplate.height = 8;
-			imageSeriesTemplate.nonScaling = true;
-			imageSeriesTemplate.tooltipText = "{name}";
-			imageSeriesTemplate.fill = am4core.color("#0000");
-			imageSeriesTemplate.background.fillOpacity = 0;
-			imageSeriesTemplate.background.fill = am4core.color("#ffffff");
-			imageSeriesTemplate.setStateOnChildren = true;
-			imageSeriesTemplate.states.create("hover");
-
-			imageSeries.data = this.techs;
+			this.draw(map);
 
 			//UI ELEMENTS TO CONTROL ZOOM AND RECENTER MAP
 			var zoomControl = new am4maps.ZoomControl();
@@ -118,6 +87,61 @@ export class MapComponent {
 			});
 
 			this.map = map;
+		})
+
+	}
+
+	draw(map : am4maps.MapChart) {
+		this.data.map( d => {
+			if(d.yearFrom <= this.yearInUse && d.yearTo >= this.yearInUse)
+				this.techs.push(d);
+		});
+
+		console.log(this.techs);
+
+		let imageSeries = map.series.push(new am4maps.MapImageSeries());
+		let imageSeriesTemplate = imageSeries.mapImages.template;
+
+		let circle = imageSeriesTemplate.createChild(am4core.Circle);
+		circle.radius = 5;
+		circle.fill = am4core.color("#DD9933");
+		circle.opacity = 1;
+		circle.stroke = am4core.color("white");
+
+		//WHAT PARAMETERS USE AS POSITION ON THE MAP
+		imageSeriesTemplate.propertyFields.latitude = "latitude";
+		imageSeriesTemplate.propertyFields.longitude = "longitude";
+
+		imageSeriesTemplate.horizontalCenter = "middle";
+		imageSeriesTemplate.verticalCenter = "middle";
+		imageSeriesTemplate.align = "center";
+		imageSeriesTemplate.valign = "middle";
+		imageSeriesTemplate.width = 8;
+		imageSeriesTemplate.height = 8;
+		imageSeriesTemplate.nonScaling = false;
+		//imageSeriesTemplate.scale = 0.8;
+		imageSeriesTemplate.tooltipText = "{name}";
+		imageSeriesTemplate.fill = am4core.color("#0000");
+		imageSeriesTemplate.background.fillOpacity = 0;
+		imageSeriesTemplate.background.fill = am4core.color("#ffffff");
+		imageSeriesTemplate.setStateOnChildren = true;
+		imageSeriesTemplate.states.create("hover");
+
+		imageSeries.data = this.techs;
+	}
+
+	onChanged(y : number) {
+		this.yearInUse = y;
+		this.map.series.pop();
+		this.techs = [];
+		this.draw(this.map);	
+	}
+
+	ngOnDestroy() {
+		this.zone.runOutsideAngular(() => {
+			if(this.chart) {
+				this.chart.dispose();
+			}
 		})
 	}
 
@@ -161,13 +185,5 @@ export class MapComponent {
 		})
 	}
 	*/
-
-	ngOnDestroy() {
-		this.zone.runOutsideAngular(() => {
-			if(this.chart) {
-				this.chart.dispose();
-			}
-		})
-	}
 
 }

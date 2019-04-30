@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { coerceNumberProperty } from '@angular/cdk/coercion';
 import { DataService } from '../data.service';
 import { valueToRelative } from '@amcharts/amcharts4/.internal/core/utils/Utils';
@@ -10,8 +10,10 @@ import { valueToRelative } from '@amcharts/amcharts4/.internal/core/utils/Utils'
 })
 export class TimesliderComponent {
 
-  constructor(private data : DataService) { }
+  constructor() { }
   
+  @Output() timed = new EventEmitter<number>();
+
   autoTicks = false;
   disabled = false;
   invert = false;
@@ -19,14 +21,13 @@ export class TimesliderComponent {
   min = 1930;
   showTicks = false;
   step = 1;
-  thumbLabel = false;
-  value = 1950;
+  thumbLabel = true;
+  value = 2010;
   vertical = false;
 
-  onChange(year : number) {
-    this.data.yearFrom = year;
-    console.log(year);
-    console.log(this.data.yearFrom);
+  onChange(yearInUse : number) {
+    this.timed.emit(yearInUse);
+    console.log(yearInUse);
   }
 
 

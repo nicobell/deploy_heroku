@@ -8,6 +8,8 @@
     
     <div class="timeline margin">
         <div class="title">TIME SELECTOR</div>
-        <app-timeslider></app-timeslider>
+        <app-timeslider
+            (timed)="onChanged($event)"
+        ></app-timeslider>
     </div>
 </div>
