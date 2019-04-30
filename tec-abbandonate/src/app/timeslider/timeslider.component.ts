@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { coerceNumberProperty } from '@angular/cdk/coercion';
 import { DataService } from '../data.service';
+import { valueToRelative } from '@amcharts/amcharts4/.internal/core/utils/Utils';
 
 @Component({
   selector: 'app-timeslider',
@@ -27,5 +28,6 @@ export class TimesliderComponent {
     console.log(year);
     console.log(this.data.yearFrom);
   }
+
 
 }

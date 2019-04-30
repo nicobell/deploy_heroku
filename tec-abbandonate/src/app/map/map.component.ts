@@ -10,7 +10,6 @@ import { DATA } from 'src/app/mock-data';
 import { YEARFROM } from 'src/app/mock-data';
 import { YEARTO } from 'src/app/mock-data';
 
-
 am4core.useTheme(am4themes_animated);
 
 @Component({
@@ -74,7 +73,7 @@ export class MapComponent {
 				"fill": am4core.color("#5C5CFF")
 			}];
 			*/
-
+	
 			// MARKERS
 			let imageSeries = map.series.push(new am4maps.MapImageSeries());
 			let imageSeriesTemplate = imageSeries.mapImages.template;
