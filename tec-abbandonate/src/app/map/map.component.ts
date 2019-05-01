@@ -6,7 +6,7 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import { DATA } from 'src/app/mock-data';
-import { deflateRaw } from 'zlib';
+import { makeParamDecorator } from '@angular/core/src/util/decorators';
 
 am4core.useTheme(am4themes_animated);
 
@@ -25,6 +25,7 @@ export class MapComponent {
 	data = DATA;
 	yearInUse = 2010;
 	techs = [];
+	anteprima : string;
 
 	ngAfterViewInit() {
 
@@ -108,6 +109,10 @@ export class MapComponent {
 		circle.opacity = 1;
 		circle.stroke = am4core.color("white");
 
+		circle.events.on("hit", function(event) {
+			console.log(event.target);
+		})
+
 		//WHAT PARAMETERS USE AS POSITION ON THE MAP
 		imageSeriesTemplate.propertyFields.latitude = "latitude";
 		imageSeriesTemplate.propertyFields.longitude = "longitude";
@@ -128,6 +133,10 @@ export class MapComponent {
 		imageSeriesTemplate.states.create("hover");
 
 		imageSeries.data = this.techs;
+	}
+
+	onClick() {
+		console.log("clicked!")
 	}
 
 	onChanged(y : number) {

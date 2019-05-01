@@ -1,9 +1,6 @@
 
 import { Data } from 'src/app/data';
 
-export var YEARFROM = 1860;
-export var YEARTO = 2019;
-
 export const DATA: Data[] = [
   {
     id: 1,
