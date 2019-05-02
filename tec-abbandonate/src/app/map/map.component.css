@@ -1,3 +1,7 @@
+.container-fluid{
+    padding: 50px!important;
+}
+
 .map{
     margin: auto;
     margin-top: 60px;
@@ -21,22 +25,23 @@
     font-weight: 700;
 }
 
-.column {
-    float: left;
-    padding: 10px;
-    height: 450px;
+#anteprima{
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    padding-right:80px;
 }
 
-.left {
-    width: 25%;
+#esterno{
+    
+    border: 2px solid  #d9d9d9;    
+    padding: 20px;
+    border-radius: 20px;
 }
 
-.right {
-    width: 75%;
-}
-
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
+.btn{
+    margin: auto;
+    margin-top: 100px;
+    color: white;
+    background-color: var(--main-color);
 }

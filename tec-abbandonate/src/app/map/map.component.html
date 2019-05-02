@@ -1,18 +1,23 @@
 <app-nav-filter></app-nav-filter>
 
+
+<div class="container-fluid">
 <div class="title">WORLD MAP of TECHNOLOGIES</div>
 
 <div class="row">
 
-    <div class="column right">
+    <div class="col">
         <div class="map">
             <div id="chartdiv" style="height: 450px"></div>
         </div>
     </div>
 
-    <div class="column left">
+    <div class="col-3" id="anteprima" style="display:none">
         <div class="title" >ANTEPRIMA DESCRIZIONE:</div>
-        <div id="descr"></div>
+        <div id="esterno">
+            <div id="descr"></div>
+            <button class="btn" onclick='document.getElementById("anteprima").style.display = "none"; '> Chiudi</button>          
+        </div>
     </div>
 
 </div>
@@ -22,4 +27,6 @@
     <app-timeslider
         (timed)="onChanged($event)"
     ></app-timeslider>
+</div>
+
 </div>

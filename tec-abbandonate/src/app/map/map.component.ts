@@ -137,6 +137,8 @@ export class MapComponent {
 				if(d.longitude == ev.target.longitude && d.latitude == ev.target.latitude) {
 					console.log(d);
 					document.getElementById("descr").innerHTML = d.description + " ";
+					document.getElementById("anteprima").style.display = "block";
+					
 				}
 			})
 		})
@@ -201,5 +203,5 @@ export class MapComponent {
 		})
 	}
 	*/
-
+	
 }
