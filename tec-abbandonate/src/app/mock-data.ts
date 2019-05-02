@@ -8,15 +8,15 @@ export const DATA: Data[] = [
     description: 'Il Super 8 millimetri è un formato cinematografico. ',
     shortDescription: 'La Super 8 millimetri, o semplicemente Super 8, è una videocamera che utilizza nello specifico il formato 8 millimetri, dal quale prende il nome.',
     category: 'fotografia',
-    dateFrom: '01/01/1965', /* !!Rispetta il formato!!! */
-    dateTo: '01/01/1075',
+    dateFrom: '01/01/1965',
+    dateTo: '01/01/1975',
     yearFrom: 1965,
     yearTo: 1975,
     author: 'Kodak',
     latitude: 43.157285,
     longitude: -77.615214,
     fill: "#8fffe4",
-    image: 'src/assets/DataImage/polaroid.jpg' /* !!Rispettare il path della cartella!!! */
+    image: 'src/assets/DataImage/polaroid.jpg'
   }, {
     id: 2,
     name: 'Betamax',
@@ -28,7 +28,7 @@ export const DATA: Data[] = [
     yearFrom: 1975,
     yearTo: 2002,
     author: 'Sony',
-    latitude: 37,//35.689506,
+    latitude: 37,
     longitude: 140.6917,
     fill: "#db50a4",
     image: 'src/assets/DataImage/betamax.jpg' /* !!Rispettare il path della cartella!!! */
@@ -77,7 +77,7 @@ export const DATA: Data[] = [
     yearFrom: 1877,
     yearTo: 1929,
     author: 'Thomas Edison',
-    latitude: 40.565 ,
+    latitude: 40.565,
     longitude: -74.3375 ,
     fill: "#dd9933",
     image: '',
@@ -94,8 +94,8 @@ export const DATA: Data[] = [
     yearFrom: 1937,
     yearTo: 1997,
     author: 'RCA Victor',
-    latitude: 40.565, 
-    longitude: -74.3375,
+    latitude: 39, 
+    longitude: -76,
     fill: "#dd9933",
     image: '',
   //dopo la grande depressione i soldi erano pochi

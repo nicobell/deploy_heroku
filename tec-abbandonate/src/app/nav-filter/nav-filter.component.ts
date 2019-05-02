@@ -12,8 +12,10 @@ export class NavFilterComponent implements OnInit {
 
   cat1 = 'audio';
   cat2 = 'video';
-  cat3 = 'cat3';
-  all = 'all'
+  cat3 = 'comunicazione';
+  cat4 = 'computer';
+  cat5 = 'fotografia';
+  all = 'all';
 
   @Output() chosen = new EventEmitter<string>();
 
