@@ -94,21 +94,25 @@ export class MapComponent {
 	}
 
 	draw(map : am4maps.MapChart) {
-		this.data.map( d => {
-			if(d.yearFrom <= this.yearInUse && d.yearTo >= this.yearInUse && (this.categoria =='all' ? true : d.category==this.categoria))
-				this.techs.push(d);
-		});
-
-		//console.log(this.techs);
 
 		let imageSeries = map.series.push(new am4maps.MapImageSeries());
 		let imageSeriesTemplate = imageSeries.mapImages.template;
 
 		let circle = imageSeriesTemplate.createChild(am4core.Circle);
 		circle.radius = 5;
-		circle.fill = am4core.color("#DD9933");
+		circle.propertyFields.fill = "fill";
 		circle.opacity = 1;
 		circle.stroke = am4core.color("white");
+		
+		this.data.map( d => {
+			if(d.yearFrom <= this.yearInUse && d.yearTo >= this.yearInUse && (this.categoria =='all' ? true : d.category==this.categoria))
+			{	
+				this.techs.push(d);
+			}
+		});
+
+
+		
 
 		//imageSeriesTemplate.tooltipHTML = '<div>{description}</div>';
 
@@ -125,7 +129,7 @@ export class MapComponent {
 		imageSeriesTemplate.nonScaling = true;
 		//imageSeriesTemplate.scale = 0.8;
 		imageSeriesTemplate.tooltipHTML = "<b>{name}</b> <br/> from: {author} ";
-		imageSeriesTemplate.fill = am4core.color("#0000");
+		imageSeriesTemplate.fill = am4core.color("#000000");
 		imageSeriesTemplate.background.fillOpacity = 0;
 		imageSeriesTemplate.background.fill = am4core.color("#ffffff");
 		imageSeriesTemplate.setStateOnChildren = true;

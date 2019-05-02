@@ -15,6 +15,7 @@ export const DATA: Data[] = [
     author: 'Kodak',
     latitude: 43.157285,
     longitude: -77.615214,
+    fill: "#8fffe4",
     image: 'src/assets/DataImage/polaroid.jpg' /* !!Rispettare il path della cartella!!! */
   }, {
     id: 2,
@@ -29,6 +30,7 @@ export const DATA: Data[] = [
     author: 'Sony',
     latitude: 37,//35.689506,
     longitude: 140.6917,
+    fill: "#db50a4",
     image: 'src/assets/DataImage/betamax.jpg' /* !!Rispettare il path della cartella!!! */
   //creata in Giappone ma venduta negli Stati Uniti
   //videotape format war contro VHS - 1970s e 1980s
@@ -45,6 +47,7 @@ export const DATA: Data[] = [
     author: 'JVC',
     latitude: 35.444991,
     longitude: 139.636768,
+    fill: "#db50a4",
     image: '',
   /*1999 hanno ridotto tantissimo la produzione, ma hanno continuato a vendere fino al 2015. Dal 2016 solo un'azienda al mondo li produce. Credo siano ancora prodotti - WIKI DICE 2008 */	
   }, {
@@ -60,6 +63,7 @@ export const DATA: Data[] = [
     author: 'David Paul Greg - James Russell',
     latitude: 33.839722 ,
     longitude: -118.259722 ,
+    fill: "#db50a4",
     image: '',
   //poco popolare in Europa e Nord America, mentre negli USA andava fortissimo
   }, {
@@ -75,6 +79,7 @@ export const DATA: Data[] = [
     author: 'Thomas Edison',
     latitude: 40.565 ,
     longitude: -74.3375 ,
+    fill: "#dd9933",
     image: '',
   /* Edison continued to manufacture and sell cylinder records until quitting the record business entirely in November of 1929, and the history of disc and cylinder rivalry was concluded */
   //facciamo riferimento solo ai primi - cilindrici - e non quelli elettronici con braccetto
@@ -91,6 +96,7 @@ export const DATA: Data[] = [
     author: 'RCA Victor',
     latitude: 40.565, 
     longitude: -74.3375,
+    fill: "#dd9933",
     image: '',
   //dopo la grande depressione i soldi erano pochi
   //dal 2007 tornati in voga
@@ -107,6 +113,7 @@ export const DATA: Data[] = [
     author: 'AEG',
     latitude: 52.5170365,
     longitude: 13.3888599,
+    fill: "#dd9933",
     image: '',
   }, {
     id: 8,
@@ -121,6 +128,7 @@ export const DATA: Data[] = [
     author: 'Philips',
     latitude: 52.366667 ,
     longitude: 4.866667 ,
+    fill: "#dd9933",
     image: '',
   }, {
     id: 9 ,
@@ -135,6 +143,7 @@ export const DATA: Data[] = [
     author: 'Texas Instruments',
     latitude: 32.783333,
     longitude: -96.8,
+    fill: "#dd9933",
     image: '',
   }, {
     id: 10 ,
@@ -149,6 +158,7 @@ export const DATA: Data[] = [
     author: 'Philips',
     latitude: 50.93,
     longitude: 5.3375,
+    fill: "#dd9933",
     image: '',
   }
 

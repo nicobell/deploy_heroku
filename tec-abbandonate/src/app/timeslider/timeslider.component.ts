@@ -1,7 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { coerceNumberProperty } from '@angular/cdk/coercion';
-import { DataService } from '../data.service';
-import { valueToRelative } from '@amcharts/amcharts4/.internal/core/utils/Utils';
 
 @Component({
   selector: 'app-timeslider',
