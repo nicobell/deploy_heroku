@@ -35,6 +35,6 @@ li{
 
 .main-row{
     margin-top: 40px;    
-    background-color: #DADADA;
+    border-bottom: 2px solid grey;
     padding: 20px;
 }

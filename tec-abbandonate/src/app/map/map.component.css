@@ -4,7 +4,7 @@
 
 .map{
     margin: auto;
-    margin-top: 60px;
+    margin-top: 30px;
 }
 .timeline{
     text-align: center;
@@ -16,8 +16,7 @@
 }
 
 .title{
-    margin-top: 40px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: center;
     color: var(--main-color);
     font-size: 1.2em;

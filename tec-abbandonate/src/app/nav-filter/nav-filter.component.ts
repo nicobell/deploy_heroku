@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { color } from '@amcharts/amcharts4/core';
 
 @Component({
   selector: 'app-nav-filter',
@@ -23,7 +24,18 @@ export class NavFilterComponent implements OnInit {
 
   onClick(id : string) {
     this.chosen.emit(id);
-    //console.log(id);
+    
+    var x = document.getElementsByClassName("nav-link");
+    var i:number;
+    for (i = 0; i < x.length; i++) {
+      x[i].classList.remove("active");
+    }
+
+    if (document.getElementById(id).focus){
+      document.getElementById(id).className += " active";
+    } 
+    
+    
   }
 
 }

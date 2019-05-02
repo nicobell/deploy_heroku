@@ -143,7 +143,6 @@ export class MapComponent {
 					//console.log(d);
 					document.getElementById("descr").innerHTML = d.description + " ";
 					document.getElementById("anteprima").style.display = "block";
-					
 				}
 			})
 		})

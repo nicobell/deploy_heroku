@@ -8,3 +8,6 @@
 ::ng-deep .mat-accent .mat-slider-track-fill {
     background-color: var(--main-color);
 } 
+label{
+    margin-bottom: 30px;
+}
