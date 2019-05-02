@@ -105,7 +105,10 @@ export class MapComponent {
 		circle.stroke = am4core.color("white");
 		
 		this.data.map( d => {
-			if(d.yearFrom <= this.yearInUse && d.yearTo >= this.yearInUse && (this.categoria =='all' ? true : d.category==this.categoria))
+			if(
+				(d.yearFrom <= this.yearInUse && d.yearTo >= this.yearInUse)
+				|| (d.yearFrom >= this.yearInUse && d.yearFrom < this.yearInUse+10)
+				&& (this.categoria =='all' ? true : d.category==this.categoria))
 			{	
 				this.techs.push(d);
 			}
@@ -141,7 +144,7 @@ export class MapComponent {
 			a.map( d => {
 				if(d.longitude == ev.target.longitude && d.latitude == ev.target.latitude) {
 					//console.log(d);
-					document.getElementById("descr").innerHTML = d.description + " ";
+					document.getElementById("descr").innerHTML = d.description + "<br/>" + d.dateFrom + ", " + d.dateTo;
 					document.getElementById("anteprima").style.display = "block";
 				}
 			})
