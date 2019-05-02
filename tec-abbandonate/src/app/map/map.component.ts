@@ -106,9 +106,14 @@ export class MapComponent {
 		
 		this.data.map( d => {
 			if(
-				(d.yearFrom <= this.yearInUse && d.yearTo >= this.yearInUse)
-				|| (d.yearFrom >= this.yearInUse && d.yearFrom < this.yearInUse+10)
-				&& (this.categoria =='all' ? true : d.category==this.categoria))
+				(this.categoria =='all' ? true : d.category==this.categoria) && (
+					//quelli che iniziano prima e finiscono fopo il decennio selezionato
+					//es: 1970 == anni 70
+					//e quelli che iniziano dopo ma non oltre la fine del decennio
+					//es: quelli che iniziano tra il 1970 e il 1979
+					(d.yearFrom <= this.yearInUse && d.yearTo >= this.yearInUse)
+					|| (d.yearFrom >= this.yearInUse && d.yearFrom < this.yearInUse+10)
+				))
 			{	
 				this.techs.push(d);
 			}
