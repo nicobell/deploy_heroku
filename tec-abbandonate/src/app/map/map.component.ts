@@ -109,9 +109,7 @@ export class MapComponent {
 		circle.opacity = 1;
 		circle.stroke = am4core.color("white");
 
-		circle.events.on("hit", function(event) {
-			console.log(event.target);
-		})
+		//imageSeriesTemplate.tooltipHTML = '<div>{description}</div>';
 
 		//WHAT PARAMETERS USE AS POSITION ON THE MAP
 		imageSeriesTemplate.propertyFields.latitude = "latitude";
@@ -123,21 +121,30 @@ export class MapComponent {
 		imageSeriesTemplate.valign = "middle";
 		imageSeriesTemplate.width = 8;
 		imageSeriesTemplate.height = 8;
-		imageSeriesTemplate.nonScaling = false;
+		imageSeriesTemplate.nonScaling = true;
 		//imageSeriesTemplate.scale = 0.8;
-		imageSeriesTemplate.tooltipText = "{name}";
+		imageSeriesTemplate.tooltipHTML = "<b>{name}</b> <br/> from: {author} ";
 		imageSeriesTemplate.fill = am4core.color("#0000");
 		imageSeriesTemplate.background.fillOpacity = 0;
 		imageSeriesTemplate.background.fill = am4core.color("#ffffff");
 		imageSeriesTemplate.setStateOnChildren = true;
 		imageSeriesTemplate.states.create("hover");
 
+		let a = this.data;
+
+		imageSeriesTemplate.events.on("hit", function(ev) {
+			a.map( d => {
+				if(d.longitude == ev.target.longitude && d.latitude == ev.target.latitude) {
+					console.log(d);
+					document.getElementById("descr").innerHTML = d.description + " ";
+				}
+			})
+		})
+
 		imageSeries.data = this.techs;
 	}
 
-	onClick() {
-		console.log("clicked!")
-	}
+	
 
 	onChanged(y : number) {
 		this.yearInUse = y;
