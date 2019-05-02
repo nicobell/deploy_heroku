@@ -5,18 +5,21 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Cat1</a>
+      <li class="nav-item">
+        <a class="nav-link" ngDefaultControl [(ngModel)]="cat1" (click)="onClick(cat1)">Audio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Cat2</a>
+        <a class="nav-link" ngDefaultControl [(ngModel)]="cat2" (click)="onClick(cat2)">Video</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Cat3</a>
+        <a class="nav-link" ngDefaultControl [(ngModel)]="cat3" (click)="onClick(cat3)">Cat3</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">All</a>
+        <a class="nav-link" ngDefaultControl [(ngModel)]="all" (click)="onClick(all)">All</a>
       </li>
       </ul>
-</div>
+  </div>
+
 </nav>
+
+

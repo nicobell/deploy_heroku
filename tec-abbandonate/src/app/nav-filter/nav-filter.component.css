@@ -40,6 +40,11 @@
 
 .nav-link{
   width: 100px;
+
+}
+
+.nav-link:hover {
+  cursor: pointer;
 }
 
 /* Safari 4.0 - 8.0 */

@@ -25,6 +25,7 @@ export class MapComponent {
 	data = DATA;
 	yearInUse = 2010;
 	techs = [];
+	categoria = 'all';
 	anteprima : string;
 
 	ngAfterViewInit() {
@@ -94,11 +95,11 @@ export class MapComponent {
 
 	draw(map : am4maps.MapChart) {
 		this.data.map( d => {
-			if(d.yearFrom <= this.yearInUse && d.yearTo >= this.yearInUse)
+			if(d.yearFrom <= this.yearInUse && d.yearTo >= this.yearInUse && (this.categoria =='all' ? true : d.category==this.categoria))
 				this.techs.push(d);
 		});
 
-		console.log(this.techs);
+		//console.log(this.techs);
 
 		let imageSeries = map.series.push(new am4maps.MapImageSeries());
 		let imageSeriesTemplate = imageSeries.mapImages.template;
@@ -135,7 +136,7 @@ export class MapComponent {
 		imageSeriesTemplate.events.on("hit", function(ev) {
 			a.map( d => {
 				if(d.longitude == ev.target.longitude && d.latitude == ev.target.latitude) {
-					console.log(d);
+					//console.log(d);
 					document.getElementById("descr").innerHTML = d.description + " ";
 					document.getElementById("anteprima").style.display = "block";
 					
@@ -146,7 +147,12 @@ export class MapComponent {
 		imageSeries.data = this.techs;
 	}
 
-	
+	onChosen(c : string) {
+		this.categoria = c;
+		this.map.series.pop();
+		this.techs = [];
+		this.draw(this.map);	
+	}
 
 	onChanged(y : number) {
 		this.yearInUse = y;
