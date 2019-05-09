@@ -12,7 +12,8 @@ export class Data{
   latitude: number;
   longitude: number;
   fill : string;
-  image: string //path immagine del progetto
+  image: string;
+  license: string//path immagine del progetto
 }
  
 /*

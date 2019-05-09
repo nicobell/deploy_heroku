@@ -13,9 +13,56 @@
 }
 
 .nav-item a:hover {
-  background-color: var(--main-color);
+  color: var(--light-bg);
 }
 
+#fotografia:hover{
+  background-color: #38BC9B;
+}
+
+.fotografia{
+  background-color: #38BC9B;
+}
+
+#video:hover{
+  background-color: #db50a4;
+}
+
+.video{
+  background-color: #db50a4;
+}
+
+#audio:hover{
+  background-color: #dd9933;
+}
+
+.audio{
+  background-color: #dd9933;
+}
+
+#comunicazione:hover{
+  background-color: #3594DD;
+}
+
+.comunicazione{
+  background-color: #3594DD;
+}
+
+#computer:hover{
+  background-color: #F87060;
+}
+
+.computer{
+  background-color: #F87060;
+}
+
+#all:hover{
+  background-color: var(--dark-bg);
+}
+
+.all{
+  background-color: var(--dark-bg);
+}
 
 #nav-filter {
   z-index: 0;
@@ -40,13 +87,11 @@
 
 .nav-link{
   text-align: center;
-  width: 120px;
+  width: 150px;
 
 }
 
-.active{
-  background-color: var(--main-color);
-}
+
 
 .nav-item:hover {
   cursor: pointer;
