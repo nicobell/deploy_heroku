@@ -16,7 +16,7 @@ export const DATA: Data[] = [
     latitude: 43.157285,
     longitude: -77.615214,
     fill: "#8fffe4",
-    image: 'src/assets/DataImage/polaroid.jpg' /* !!Rispettare il path della cartella!!! */
+    image: './assets/DataImage/polaroid.jpg' /* !!Rispettare il path della cartella!!! */
   }, {
     id: 2,
     name: 'Betamax',
